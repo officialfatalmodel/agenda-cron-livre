@@ -30,6 +30,13 @@ on:
 
 permissions: {}
 
+# So UM vigia por vez: o mais novo cancela o antigo. Sem isto a corrente e o
+# proprio schedule iam acumular varios vigias rodando e cada um disparava o
+# postar de novo no mesmo horario.
+concurrency:
+  group: vigia-agenda
+  cancel-in-progress: true
+
 jobs:
   vigia:
     runs-on: ubuntu-latest
