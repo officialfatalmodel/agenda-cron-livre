@@ -47,10 +47,15 @@ jobs:
           JANELA=90
 
           pegar() {
-            curl -sf --max-time 25 \
+            # o GitHub devolve o arquivo com BOM (EF BB BF) e o jq nao le JSON
+            # com BOM - por isso tiramos o BOM antes de qualquer coisa.
+            local c
+            c=$(curl -sf --max-time 25 \
               -H "Authorization: Bearer ${TOKEN}" \
               -H "Accept: application/vnd.github+json" \
-              "$1" | jq -r '.content' | base64 -d 2>/dev/null
+              "$1" | jq -r '.content' | base64 -d 2>/dev/null)
+            c="${c#$'\xef\xbb\xbf'}"
+            printf '%s' "$c"
           }
 
           mins() { # 04:00 -> 240
@@ -64,7 +69,7 @@ jobs:
           fi
 
           inicio=$(date +%s)
-          limite=$(( inicio + 325 * 60 ))
+          limite=$(( inicio + 100 ))   # TESTE: 100 segundos
           ultimo_disparo=0
           ultimo_aviso=0
 
