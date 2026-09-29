@@ -1,4 +1,4 @@
-﻿name: Agenda
+name: Agenda
 
 # Repositorio PUBLICO de proposito (minutos ilimitados e gratis).
 # Aqui NAO tem video nem dado nenhum.
@@ -10,6 +10,7 @@
 # No fim do tempo dele ele se dispara de novo para continuar a correnha.
 on:
   schedule:
+    - cron: '58 2 * * *'
     - cron: '0 7 * * *'
     - cron: '30 7 * * *'
     - cron: '0 8 * * *'
