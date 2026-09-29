@@ -10,7 +10,6 @@ name: Agenda
 # No fim do tempo dele ele se dispara de novo para continuar a correnha.
 on:
   schedule:
-    - cron: '58 2 * * *'
     - cron: '0 7 * * *'
     - cron: '30 7 * * *'
     - cron: '0 8 * * *'
