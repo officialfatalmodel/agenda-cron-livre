@@ -1,4 +1,4 @@
-name: Agenda
+﻿name: Agenda
 
 # Repositorio PUBLICO de proposito (minutos ilimitados e gratis).
 # Aqui NAO tem video nem dado nenhum.
@@ -69,7 +69,7 @@ jobs:
           fi
 
           inicio=$(date +%s)
-          limite=$(( inicio + 100 ))   # TESTE: 100 segundos
+          limite=$(( inicio + 325 * 60 ))
           ultimo_disparo=0
           ultimo_aviso=0
 
